@@ -1,12 +1,12 @@
 sample_project:
-    job_name: phpunit-unit
-        max_processes: 4
-        command: phpunit --log-junit $ARTIFACTS_DIR/result.xml $TESTPATH --debug
-        atomizer:
-            TESTPATH: find test/php/unit -name '*[t|T]est.php'
+    - job_name: phpunit-unit
+      max_processes: 4
+      command: phpunit --log-junit $ARTIFACTS_DIR/result.xml $TESTPATH --debug
+      atomizer:
+          TESTPATH: find test/php/unit -name '*[t|T]est.php'
 
-    job_name: phpunit-integration
-        max_processes: 4
-        command: phpunit --log-junit $ARTIFACTS_DIR/result.xml $TESTPATH --debug
-        atomizer:
-            TESTPATH: find test/php/integration -name '*[t|T]est.php'
+    - job_name: phpunit-integration
+      max_processes: 4
+      command: phpunit --log-junit $ARTIFACTS_DIR/result.xml $TESTPATH --debug
+      atomizer:
+          TESTPATH: find test/php/integration -name '*[t|T]est.php'
