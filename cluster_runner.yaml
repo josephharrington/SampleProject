@@ -1,12 +1,11 @@
-sample_project:
-    - job_name: phpunit-unit
-      max_processes: 4
-      command: phpunit --log-junit $ARTIFACTS_DIR/result.xml $TESTPATH --debug
-      atomizer:
-          TESTPATH: find test/php/unit -name '*[t|T]est.php'
+boxci:
+     name: webapp_phpunit_modular_file_system_unit
+     max_processes: 50
 
-    - job_name: phpunit-integration
-      max_processes: 4
-      command: phpunit --log-junit $ARTIFACTS_DIR/result.xml $TESTPATH --debug
-      atomizer:
-          TESTPATH: find test/php/integration -name '*[t|T]est.php'
+     command:
+          - phpunit --log-junit $ARTIFACT_DIR/result.xml $TESTPATH --debug
+
+     atomizer:
+          type: shell
+          shell_command:
+               - find test/php/unit -name '*[t|T]est.php' | xargs -I {} echo 'export TESTPATH='{}
