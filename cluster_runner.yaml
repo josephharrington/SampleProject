@@ -1,11 +1,8 @@
-boxci:
-     name: webapp_phpunit_modular_file_system_unit
-     max_processes: 50
+sample:
+     max_executors: 50
 
-     command:
+     commands:
           - phpunit --log-junit $ARTIFACT_DIR/result.xml $TESTPATH --debug
 
-     atomizer:
-          type: shell
-          shell_command:
-               - find test/php/unit -name '*[t|T]est.php' | xargs -I {} echo 'export TESTPATH='{}
+     atomizers:
+          - find test/php/unit -name '*[t|T]est.php' | xargs -I {} echo 'export TESTPATH='{}
