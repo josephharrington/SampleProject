@@ -5,4 +5,4 @@ sample:
           - phpunit --log-junit $ARTIFACT_DIR/result.xml $TESTPATH --debug
 
      atomizers:
-          - find test/php/unit -name '*[t|T]est.php' | xargs -I {} echo 'export TESTPATH='{}
+          - TESTPATH: find $PROJECT_DIR/test/php/unit -name '*[t|T]est.php'
